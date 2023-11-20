@@ -29,14 +29,20 @@ namespace Business.Concretes
             return new SuccessResult(Messages.Added);
         }
 
-        public IResult Delete(Category category)
+        public IResult Delete(int id)
         {
+            _categorydal.Delete(GetById(id).Data);
             return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<List<Category>> GetAll()
         {
             return new SuccessDataResult<List<Category>>(_categorydal.GetAll());
+        }
+
+        public IDataResult<Category> GetById(int id)
+        {
+            return new SuccessDataResult<Category>(_categorydal.Get(c => c.Id == id));
         }
 
         public IResult Update(Category category)

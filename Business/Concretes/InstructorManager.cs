@@ -29,15 +29,20 @@ namespace Business.Concretes
             return new SuccessResult(Messages.Added);
         }
 
-        public IResult Delete(Instructor instructor)
+        public IResult Delete(int id)
         {
-            _instructorDal.Delete(instructor);
+            _instructorDal.Delete(GetById(id).Data);
             return new SuccessResult(Messages.Deleted);
         }
 
         public IDataResult<List<Instructor>> GetAll()
         {
             return new SuccessDataResult<List<Instructor>>(_instructorDal.GetAll());
+        }
+
+        public IDataResult<Instructor> GetById(int id)
+        {
+            return new SuccessDataResult<Instructor>(_instructorDal.Get(i=>i.Id == id));
         }
 
         public IResult Update(Instructor instructor)

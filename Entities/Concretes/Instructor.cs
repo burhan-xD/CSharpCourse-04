@@ -12,6 +12,6 @@ namespace Entities.Concretes
         public int Id { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public List<CourseInstructor> CourseInstructors { get; set; }
+        public List<CourseInstructor>? CourseInstructors { get; set; }
     }
 }

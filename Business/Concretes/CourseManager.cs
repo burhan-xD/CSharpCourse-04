@@ -30,9 +30,10 @@ namespace Business.Concretes
             return new SuccessResult(Messages.Added);
         }
 
-        public IResult Delete(Course course)
+        public IResult Delete(int id)
         {
-            _course.Delete(course);
+            //var course = GetById(id).Data;
+            _course.Delete(GetById(id).Data);
             return new SuccessResult(Messages.Deleted);
         }
 

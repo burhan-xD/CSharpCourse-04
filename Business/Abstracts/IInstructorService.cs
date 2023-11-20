@@ -11,8 +11,9 @@ namespace Business.Abstracts
     public interface IInstructorService
     {
         IDataResult<List<Instructor>> GetAll();
+        IDataResult<Instructor> GetById(int id);
         IResult Add(Instructor instructor);
         IResult Update(Instructor instructor);
-        IResult Delete(Instructor instructor);
+        IResult Delete(int id);
     }
 }
