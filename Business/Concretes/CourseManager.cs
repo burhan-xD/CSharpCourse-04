@@ -16,6 +16,7 @@ using FluentValidation;
 using Business.ValidationRules.FluentValidation;
 using ValidationException = FluentValidation.ValidationException;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Aspects.Autofac.Validation;
 
 
 namespace Business.Concretes
@@ -29,9 +30,10 @@ namespace Business.Concretes
             _course = course;
         }
 
+        [ValidationAspect(typeof(CourseValidator))]
         public IResult Add(Course course)
         {
-            ValidationTool.Validate(new CourseValidator(), course);
+            //ValidationTool.Validate(new CourseValidator(), course);
             _course.Add(course);
             return new SuccessResult(Messages.Added);
         }
