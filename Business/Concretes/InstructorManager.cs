@@ -11,6 +11,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+
 
 namespace Business.Concretes
 {
@@ -23,6 +26,7 @@ namespace Business.Concretes
             _instructorDal = instructorDal;
         }
 
+        [ValidationAspect(typeof(InstructorValidator))]
         public IResult Add(Instructor instructor)
         {
             _instructorDal.Add(instructor);
