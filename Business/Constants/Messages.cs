@@ -14,6 +14,12 @@ namespace Business.Constants
         public static string Error = "Hata!";
         public static string Listed = "Listelendi.";
 
+        /* Validation mesajları FluentValidation üzerine aktarıldı.
+         * 
+        public static string PriceInvalid = "Fiyat 10'dan küçük olamaz.";
+        public static string IdInvalid = "ID 0 olamaz.";
+        public static string NameInvalid = "Kurs ismi en az 5 karakter olmalı.";
+        */
 
 
 

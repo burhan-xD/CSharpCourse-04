@@ -11,6 +11,11 @@ using Entities.Concretes.DTOs;
 using Core.Utilities.Results.Abstract;
 using Core.Utilities.Results.Concrete;
 using Business.Constants;
+using System.ComponentModel.DataAnnotations;
+using FluentValidation;
+using Business.ValidationRules.FluentValidation;
+using ValidationException = FluentValidation.ValidationException;
+using Core.CrossCuttingConcerns.Validation;
 
 
 namespace Business.Concretes
@@ -26,6 +31,7 @@ namespace Business.Concretes
 
         public IResult Add(Course course)
         {
+            ValidationTool.Validate(new CourseValidator(), course);
             _course.Add(course);
             return new SuccessResult(Messages.Added);
         }
